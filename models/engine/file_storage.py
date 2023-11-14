@@ -4,6 +4,14 @@
 """
 import json
 import os
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.state import State
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review 
+
 
 
 class FileStorage:
@@ -50,24 +58,42 @@ class FileStorage:
         """sets in __objects the obj
         with key <obj class name>.id
         """
-        key = obj.__class__.__name__ + "." + obj.id
-        self.__objects[key] = obj.to_dict()
+        # key = obj.__class__.__name__ + "." + obj.id
+        # self.__objects[key] = obj.to_dict()
+        
+        key = obj.__class__.__name__
+        FileStorage.__objects["{}.{}".format(key, obj.id)] = obj
 
     def save(self):
         """serializes __objects to the JSON file
         (path: __file_path)
         """
-        with open(self.__file_path, "w") as f:
-            json.dump(self.__objects, f)
+        # with open(self.__file_path, "w") as f:
+        #     json.dump(self.__objects, f)
+
+        objs = FileStorage.__objects
+        objs_and_dicts = {obj: objs[obj].to_dict() for obj in objs.keys()}
+        with open(FileStorage.__file_path, "w") as f:
+            json.dump(objs_and_dicts, f)
+
 
     def reload(self):
         """deserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists ;
         otherwise, no exception should be raised)
         """
+        # try:
+        #     with open(self.__file_path, "r") as f:
+        #         if os.path.getsize(self.__file_path) != 0:
+        #             self.__objects = json.load(f)
+        # except IOError:
+        #     pass
+
         try:
-            with open(self.__file_path, "r") as f:
-                if os.path.getsize(self.__file_path) != 0:
-                    self.__objects = json.load(f)
-        except IOError:
-            pass
+            with open(FileStorage.__file_path) as f:
+                all_objs = json.load(f)
+                for obj in all_objs.values():
+                    cls_name = obj["__class__"]
+                    self.new(eval(cls_name)(**obj))
+        except FileNotFoundError:
+            return

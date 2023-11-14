@@ -70,4 +70,8 @@ class Test_File_Storage(unittest.TestCase):
         b2.save()
         with open("file.json", "r", encoding="utf-8") as f:
             all_obj = json.load(f)
-        self.assertEqual(all_obj, storage.all())
+
+        obj_in_storage = {}
+        for k, obj in storage.all().items():
+            obj_in_storage[k] = obj.to_dict()
+        self.assertEqual(all_obj, obj_in_storage)
