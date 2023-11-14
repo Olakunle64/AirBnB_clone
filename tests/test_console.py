@@ -978,7 +978,7 @@ class Test_Console_update_with_dot_notation(unittest.TestCase):
         b1 = BaseModel()
         b1.id = "555"
         b1.save()
-        output = Test_Console.get_stdout('BaseModel.update("555")').strip()
+        output = Test_Console.get_stdout('BaseModel.update("{}")').format(b1.id).strip()
         expected_output = "** attribute name missing **"
         self.assertEqual(output, expected_output)
 
