@@ -10,8 +10,7 @@ from models.city import City
 from models.state import State
 from models.place import Place
 from models.amenity import Amenity
-from models.review import Review 
-
+from models.review import Review
 
 
 class FileStorage:
@@ -60,7 +59,7 @@ class FileStorage:
         """
         # key = obj.__class__.__name__ + "." + obj.id
         # self.__objects[key] = obj.to_dict()
-        
+
         key = obj.__class__.__name__
         FileStorage.__objects["{}.{}".format(key, obj.id)] = obj
 
@@ -75,7 +74,6 @@ class FileStorage:
         objs_and_dicts = {obj: objs[obj].to_dict() for obj in objs.keys()}
         with open(FileStorage.__file_path, "w") as f:
             json.dump(objs_and_dicts, f)
-
 
     def reload(self):
         """deserializes the JSON file to __objects

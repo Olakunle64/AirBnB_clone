@@ -978,7 +978,8 @@ class Test_Console_update_with_dot_notation(unittest.TestCase):
         b1 = BaseModel()
         b1.id = "555"
         b1.save()
-        output = Test_Console.get_stdout('BaseModel.update("{}")').format(b1.id).strip()
+        # id_created = Test_Console.get_stdout('create BaseModel').strip()
+        output = Test_Console.get_stdout('BaseModel.update("555")').strip()
         expected_output = "** attribute name missing **"
         self.assertEqual(output, expected_output)
 
@@ -1131,16 +1132,16 @@ class Test_Console_update_with_dot_notation(unittest.TestCase):
     # def test_update_dot_notation_valid_syntax(self):
     #     """Test update command does update the instace attribute"""
 
-    #     b1 = BaseModel()
-    #     b1.id = "555"
-    #     b1.save()
-    #     output = Test_Console.get_stdout(
-    #         'BaseModel.update("555", "name", "new_name")'
-    #     ).strip()
-    #     self.assertEqual(output, "")
-    #     output = Test_Console.get_stdout('BaseModel.show("555")').strip()
-    #     expected_output = "[BaseModel] (555) {}".format(b1.__dict__)
-    #     self.assertEqual(output, expected_output)
+        # b1 = BaseModel()
+        # b1.id = "555"
+        # b1.save()
+        # output = Test_Console.get_stdout(
+        #     'BaseModel.update("555", "name", "new_name")'
+        # ).strip()
+        # self.assertEqual(output, "")
+        # output = Test_Console.get_stdout('BaseModel.show("555")').strip()
+        # expected_output = "[BaseModel] (555) {}".format(b1.__dict__)
+        # self.assertEqual(output, expected_output)
 
     #     u1 = User()
     #     u1.id = "555"
