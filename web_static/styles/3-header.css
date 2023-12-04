@@ -3,10 +3,11 @@ header {
     align-items: center; display: flex;
     
 }
+
 div.logo {
     width: 120px;
     height: 50px;
     background-image: url("../images/logo.png");
-    background-size: cover;
+    background-size: 100% 100%;
     margin-left: 20px;
 }

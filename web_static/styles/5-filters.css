@@ -1,6 +1,8 @@
 .locations, .amenities {
     height: 100%; width: 25%; padding: 15px;
-    box-sizing: border-box; position: relative;
+    box-sizing: border-box;
+    position: relative;
+    justify-content: center; padding-left: 5%;
 }
 .locations h3,
 .amenities h3 {
@@ -16,12 +18,10 @@
     border-right: #DDDDDD 1px solid;
 }
 
-
 .locations,
 .amenities,
 button {
     height: 100%; /* Fill the entire height of the container */
-    flex: 1; /* Distribute the available space equally */
 }
 
 .locations h3,
