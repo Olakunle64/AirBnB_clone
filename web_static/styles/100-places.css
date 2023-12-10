@@ -3,7 +3,7 @@
     border: 1px #DDDDDD solid;
     border-radius: 4px;
     position: relative;
-    
+
 }
 .filters button {
     font-size: 18px;
@@ -13,7 +13,7 @@
     width: 20%;
     border: none;
     border-radius: 4px;
-    position: absolute; 
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 30px;
@@ -56,18 +56,21 @@ article {
     border: 1px red solid;
     border-radius: 4px;
 }
-.places article:nth-child(2) {
+.places article:nth-child(1) {
     float: right;
     margin-top: 0;
     overflow: auto;
     transform: translateX(-5%);
-    height: fit-content;
     overflow: hidden;
+    transform: translateY(2.5%);
+    color: blue;
+    right: 1%;
+}
+.places article:nth-child(2) {
+    transform: translateX(5%);
+    
 }
 .places article:nth-child(3) {
-    transform: translateX(5%);
-}
-.places article:nth-child(4) {
     position: relative;
     left: 25%;
 }
@@ -100,39 +103,39 @@ article {
     justify-content: space-around;
 }
 .places article div.information .max_guest {
-    
+
     width: 100px;
     height: 70px;
     background-image: url(../images/icon_group.png);
     background-repeat: no-repeat;
     background-position: center, center;
     background-position-y: -0.05px;
-    
+
 }
 .places article div.information .number_rooms {
-    
+
     width: 100px;
     height: 70px;
     background-image: url(../images/icon_bed.png);
     background-repeat: no-repeat;
     background-position: center, 30px;
     background-position-y: -0.05px;
-    
+
 }
 .places article div.information .number_bathrooms {
-    
+
     width: 100px;
     height: 70px;
     background-image: url(../images/icon_bath.png);
     background-repeat: no-repeat;
     background-position: center, center;
     background-position-y: -0.05px;
-    
+
 }
 .places article div.information p {
     margin-top: 50px;
     text-align: center;
-    
+
 }
 /* END OF 8-places.css */
 
@@ -176,7 +179,7 @@ article {
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 0px;
-    margin-left: -45px; 
+    margin-left: -45px;
 }
 .places article div.amenities ul li:nth-child(3) {
     background-image: url(../images/icon_pets.png);

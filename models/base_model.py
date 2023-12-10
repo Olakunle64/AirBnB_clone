@@ -7,7 +7,7 @@ defines all common attributes/methods for other classes
 
 import uuid
 import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -52,7 +52,7 @@ class BaseModel:
             current_datetime = datetime.datetime.now()
             self.created_at = current_datetime
             self.updated_at = current_datetime
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self) -> str:
         """return string representation"""
@@ -66,8 +66,8 @@ class BaseModel:
         """
         self.updated_at = datetime.datetime.now()
         key = self.__class__.__name__ + "." + self.id
-        storage._FileStorage__objects[key] = self.to_dict()
-        storage.save()
+        models.storage._FileStorage__objects[key] = self
+        models.storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values of __dict__

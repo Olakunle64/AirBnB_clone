@@ -4,7 +4,7 @@
 """
 import json
 import os
-
+from models.base_model import BaseModel
 
 class FileStorage:
     """a class FileStorage that serializes instances to a JSON file
@@ -51,23 +51,37 @@ class FileStorage:
         with key <obj class name>.id
         """
         key = obj.__class__.__name__ + "." + obj.id
-        self.__objects[key] = obj.to_dict()
+        self.__objects[key] = obj
 
     def save(self):
         """serializes __objects to the JSON file
         (path: __file_path)
         """
         with open(self.__file_path, "w") as f:
+            formatted_obj = self.__objects.copy()
+            for key, value in formatted_obj.items():
+                self.__objects[key] = value.to_dict()
             json.dump(self.__objects, f)
 
     def reload(self):
         """deserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists ;
         otherwise, no exception should be raised)
-        """
+        
         try:
             with open(self.__file_path, "r") as f:
                 if os.path.getsize(self.__file_path) != 0:
                     self.__objects = json.load(f)
         except IOError:
+            pass
+        """
+        try:
+            with open(FileStorage.__file_path, "r") as f:
+                if os.path.getsize(self.__file_path) != 0:
+                    formatted_obj = json.load(f)
+                    for key, value in formatted_obj.items():
+                        obj_class_name = eval(value["__class__"])
+                        self.__objects[key] = (obj_class_name(**value))
+                #self.__objects = formatted_obj.copy()
+        except FileNotFoundError:
             pass
