@@ -5,6 +5,12 @@
 import json
 import os
 from models.base_model import BaseModel
+from models.review import Review
+from models.state import State
+from models.amenity import Amenity
+from models.user import User
+from models.place import Place
+from models.city import City
 
 class FileStorage:
     """a class FileStorage that serializes instances to a JSON file
@@ -58,10 +64,10 @@ class FileStorage:
         (path: __file_path)
         """
         with open(self.__file_path, "w") as f:
-            formatted_obj = self.__objects.copy()
-            for key, value in formatted_obj.items():
-                self.__objects[key] = value.to_dict()
-            json.dump(self.__objects, f)
+            formatted_obj = {}
+            for key, value in self.__objects.items():
+                formatted_obj[key] = value.to_dict()
+            json.dump(formatted_obj, f)
 
     def reload(self):
         """deserializes the JSON file to __objects

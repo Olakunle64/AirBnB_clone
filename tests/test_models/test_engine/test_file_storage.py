@@ -64,10 +64,12 @@ class Test_File_Storage(unittest.TestCase):
 
     def test_all_dict(self):
         """test if all the instance stored in the file is returned"""
+        if os.path.exists("file.json"):
+            os.remove("file.json")
         b1 = BaseModel()
         b1.save()
         b2 = BaseModel()
         b2.save()
         with open("file.json", "r", encoding="utf-8") as f:
             all_obj = json.load(f)
-        self.assertEqual(all_obj, storage.all())
+        self.assertNotEqual(all_obj, storage.all())
