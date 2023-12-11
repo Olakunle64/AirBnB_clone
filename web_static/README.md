@@ -1,1 +1,1 @@
-The front-end of the AirBnB website
+The front-end design of the AirBnB website
