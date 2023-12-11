@@ -1,8 +1,9 @@
-ckground-color: white; height: 70px; width: 100%;
+.filters {
+    background-color: white; height: 70px; width: 100%;
     border: 1px #DDDDDD solid;
     border-radius: 4px;
     position: relative;
-
+    
 }
 .filters button {
     font-size: 18px;
@@ -12,7 +13,7 @@ ckground-color: white; height: 70px; width: 100%;
     width: 20%;
     border: none;
     border-radius: 4px;
-    position: absolute;
+    position: absolute; 
     top: 50%;
     transform: translateY(-50%);
     right: 30px;
@@ -47,31 +48,15 @@ section.places {
     font-size: 30px;
     text-align: center;
     position: relative;
-    left: 35%;
-    /* border: 1px solid red; */
+    left: 32%;
     width: fit-content;
 }
+
 article {
     border: 1px red solid;
     border-radius: 4px;
 }
-.places article:nth-child(1) {
-    float: right;
-    margin-top: 0;
-    overflow: auto;
-    transform: translateX(-5%);
-    overflow: hidden;
-    transform: translateY(2.5%);
-    right: 1%;
-}
-.places article:nth-child(2) {
-    transform: translateX(5%);
-    
-}
-.places article:nth-child(3) {
-    position: relative;
-    left: 25%;
-}
+
 /* END OF 7-PLACES.CSS */
 .places article div.price_by_night{
     float: right;
@@ -101,39 +86,39 @@ article {
     justify-content: space-around;
 }
 .places article div.information .max_guest {
-
+    
     width: 100px;
     height: 70px;
     background-image: url(../images/icon_group.png);
     background-repeat: no-repeat;
     background-position: center, center;
     background-position-y: -0.05px;
-
+    
 }
 .places article div.information .number_rooms {
-
+    
     width: 100px;
     height: 70px;
     background-image: url(../images/icon_bed.png);
     background-repeat: no-repeat;
     background-position: center, 30px;
     background-position-y: -0.05px;
-
+    
 }
 .places article div.information .number_bathrooms {
-
+    
     width: 100px;
     height: 70px;
     background-image: url(../images/icon_bath.png);
     background-repeat: no-repeat;
     background-position: center, center;
     background-position-y: -0.05px;
-
+    
 }
 .places article div.information p {
     margin-top: 50px;
     text-align: center;
-
+    
 }
 /* END OF 8-places.css */
 
@@ -177,7 +162,7 @@ article {
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 0px;
-    margin-left: -45px;
+    margin-left: -45px; 
 }
 .places article div.amenities ul li:nth-child(3) {
     background-image: url(../images/icon_pets.png);
@@ -208,3 +193,21 @@ article {
     position: relative;
     left: 5%;
 }
+.places .articles {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+.places h1 {
+    margin-bottom: 0px;
+}
+/* @media (max-width: 500px) {
+    .filters button {
+        background-color: blue;
+    }
+    .container {
+        max-width: 100%;
+    }
+} */
