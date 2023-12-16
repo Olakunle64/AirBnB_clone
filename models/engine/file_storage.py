@@ -12,6 +12,7 @@ from models.user import User
 from models.place import Place
 from models.city import City
 
+
 class FileStorage:
     """a class FileStorage that serializes instances to a JSON file
     and deserializes JSON file to instances
@@ -73,7 +74,7 @@ class FileStorage:
         """deserializes the JSON file to __objects
         (only if the JSON file (__file_path) exists ;
         otherwise, no exception should be raised)
-        
+
         try:
             with open(self.__file_path, "r") as f:
                 if os.path.getsize(self.__file_path) != 0:
@@ -88,6 +89,5 @@ class FileStorage:
                     for key, value in formatted_obj.items():
                         obj_class_name = eval(value["__class__"])
                         self.__objects[key] = (obj_class_name(**value))
-                #self.__objects = formatted_obj.copy()
         except FileNotFoundError:
             pass
