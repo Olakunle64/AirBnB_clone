@@ -62,14 +62,39 @@ class Test_File_Storage(unittest.TestCase):
     def test_storge_instance(self):
         self.assertEqual(type(storage), FileStorage)
 
-    def test_all_dict(self):
+    def test_all(self):
         """test if all the instance stored in the file is returned"""
         if os.path.exists("file.json"):
             os.remove("file.json")
         b1 = BaseModel()
         b1.save()
-        b2 = BaseModel()
+        """b2 = BaseModel()
         b2.save()
         with open("file.json", "r", encoding="utf-8") as f:
             all_obj = json.load(f)
-        self.assertNotEqual(all_obj, storage.all())
+        """
+        key = "BaseModel" + "." + str(b1.id)
+        self.assertEqual(b1, storage.all()[key])
+
+    def test_new(self):
+        """test the new method of the FileStorage class"""
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+        key = "BaseModel.dhhdhk124343"
+        self.assertNotIn(key, storage.all())
+        b1 = BaseModel()
+        key = "BaseModel" + "." + str(b1.id)
+        self.assertIn(key, storage.all())
+
+    def test_reload(self):
+        """test the reload method of the FileStorage class"""
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+        b1 = BaseModel()
+        key = "BaseModel" + "." + str(b1.id)
+        b1.save()
+        f1 = FileStorage()
+        f1.reload()
+        self.assertEqual(b1.id, storage.all()[key].id)
+        """self.assertIs(b1, storage.all()[key])"""
+
