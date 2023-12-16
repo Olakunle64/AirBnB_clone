@@ -96,5 +96,5 @@ class Test_File_Storage(unittest.TestCase):
         f1 = FileStorage()
         f1.reload()
         self.assertEqual(b1.id, storage.all()[key].id)
-        """self.assertIs(b1, storage.all()[key])"""
+        self.assertEqual(b1.to_dict(), storage.all()[key].to_dict())
 
